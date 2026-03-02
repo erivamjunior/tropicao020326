@@ -69,3 +69,13 @@ Se o build falhar no `ampx pipeline-deploy` com erro de resolução de módulo n
 - `./data/resource.ts`
 
 Isso evita falha de resolução no ambiente de build ESM do Amplify.
+
+
+## Proteção automática contra conflitos no deploy
+Este repositório valida automaticamente marcadores de conflito de merge (`<<<<<<<`, `=======`, `>>>>>>>`) antes do deploy.
+
+Onde roda:
+- backend build do Amplify
+- frontend build do Amplify
+
+Se existir marcador de conflito, o pipeline falha com mensagem clara para evitar deploy quebrado.
