@@ -52,3 +52,12 @@ Quando dizemos "não deve ser commitado", significa:
 
 > Neste repositório ele foi incluído como placeholder inicial para facilitar o bootstrap.
 > Em uso real de equipe, o recomendado é cada ambiente gerar o próprio `amplify_outputs.json` no pipeline/ambiente de execução.
+
+
+## Erro comum no Amplify: `npm ci` sem `package-lock.json`
+Se o build falhar com erro do tipo:
+- `The npm ci command can only install with an existing package-lock.json`
+
+Use `npm install` na fase de build (backend) do Amplify, como no `amplify.yml` deste repositório.
+
+Motivo: `npm ci` exige lockfile versionado. Sem `package-lock.json`, o build quebra.
